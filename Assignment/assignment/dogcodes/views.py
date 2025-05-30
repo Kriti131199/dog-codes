@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .forms import SignupForm, FilterForm
+from .forms import SignupForm, FilterForm, ContactForm
 from .models import ResponseList, ResponseCode
 import re
 
@@ -20,7 +20,22 @@ def match_codes(pattern):
 
 
 def home_view(request):
-    return render(request, 'dogcodes/base.html')
+    from .forms import ContactForm  # if not already imported
+    contact_form = ContactForm()
+    message_sent = False
+
+    if request.method == 'POST' and 'name' in request.POST:
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            # Optional: save or email the form data
+            print(contact_form.cleaned_data)  # Debug/demo
+            message_sent = True
+            contact_form = ContactForm()  # Clear form after submission
+
+    return render(request, 'dogcodes/base.html', {
+        'contact_form': contact_form,
+        'message_sent': message_sent
+    })
 
 def signup_view(request):
     if request.method == 'POST':

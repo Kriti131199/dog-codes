@@ -10,3 +10,8 @@ class SignupForm(UserCreationForm):
 class FilterForm(forms.Form):
     filter_input = forms.CharField(label='Filter (e.g. 2xx, 203, 20x)', max_length=10)
     list_name = forms.CharField(label='List Name', max_length=100)
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)

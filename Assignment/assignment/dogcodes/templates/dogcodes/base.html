@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Assignment</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <h1>Welcome to HTTP Dog Codes</h1>
@@ -19,5 +21,19 @@
     </nav>
     <hr>
     {% block content %}{% endblock %}
+    <hr>
+
+    <h2>Contact Us</h2>
+    <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+        {{ contact_form.as_p }}
+        <button type="submit">Send Message</button>
+    </form>
+
+    {% if message_sent %}
+        <p class="success">Your message has been sent successfully!</p>
+    {% endif %}
 </body>
 </html>
+
+
