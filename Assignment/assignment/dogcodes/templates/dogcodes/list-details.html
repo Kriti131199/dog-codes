@@ -1,0 +1,10 @@
+{% extends 'dogcodes/base.html' %}
+{% block content %}
+<h2>List: {{ list.name }}</h2>
+<ul>
+  {% for code in list.codes.all %}
+    <li>{{ code.code }}<br><img src="{{ code.image_url }}" width="200"></li>
+  {% endfor %}
+</ul>
+<a href="/lists/">Back to Lists</a>
+{% endblock %}

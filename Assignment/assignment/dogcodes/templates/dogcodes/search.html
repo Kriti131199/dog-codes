@@ -1,0 +1,14 @@
+{% extends 'dogcodes/base.html' %}
+{% block content %}
+  <h2>Search Response Codes</h2>
+
+  {% if error_message %}
+    <p style="color:red;">{{ error_message }}</p>
+  {% else %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save List</button>
+    </form>
+  {% endif %}
+{% endblock %}

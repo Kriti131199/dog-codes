@@ -1,0 +1,19 @@
+{% extends 'dogcodes/base.html' %}
+{% block content %}
+  <h2>Your Saved Lists</h2>
+
+  {% if error_message %}
+    <p style="color:red;">{{ error_message }}</p>
+  {% else %}
+    <ul>
+      {% for list in lists %}
+        <li>
+          <a href="/list/{{ list.id }}/">{{ list.name }}</a> - 
+          <a href="/list/{{ list.id }}/delete/">Delete</a>
+        </li>
+      {% empty %}
+        <li>No lists saved.</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

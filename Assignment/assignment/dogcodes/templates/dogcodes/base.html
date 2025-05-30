@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment</title>
+</head>
+<body>
+    <h1>Welcome to HTTP Dog Codes</h1>
+    <nav>
+        <a href="/search/">Search</a> |
+        <a href="/lists/">My Lists</a> |
+        {% if user.is_authenticated %}
+            <span>Welcome, {{ user.username }}!</span> |
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a> |
+            <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
