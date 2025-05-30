@@ -6,6 +6,7 @@ urlpatterns = [
     path('', dogcodes_views.home_view, name='home'),  # Homepage renders base.html or home.html
     path('admin/', admin.site.urls),
     path('', include('dogcodes.urls')),
+    path('contact/', dogcodes_views.home_view, name='contact'),
     path('signup/', dogcodes_views.signup_view, name='signup'),
     path('login/', dogcodes_views.login_view, name='login'),
     path('logout/', dogcodes_views.logout_view, name='logout'),
