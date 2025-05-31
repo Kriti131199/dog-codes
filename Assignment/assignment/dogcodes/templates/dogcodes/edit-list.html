@@ -1,0 +1,14 @@
+{% extends 'dogcodes/base.html' %}
+{% block content %}
+  <h2>Edit List: {{ list.name }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="name">List Name:</label><br>
+    <input type="text" name="name" id="name" value="{{ list.name }}" required><br><br>
+
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <p><a href="{% url 'lists' %}">Back to Lists</a></p>
+{% endblock %}
