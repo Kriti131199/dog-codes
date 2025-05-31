@@ -106,3 +106,14 @@ def delete_list_view(request, list_id):
     response_list = get_object_or_404(ResponseList, id=list_id, user=request.user)
     response_list.delete()
     return redirect('lists')
+
+@login_required(login_url='/login/')
+def edit_list_view(request, list_id):
+    response_list = get_object_or_404(ResponseList, id=list_id, user=request.user)
+    if request.method == 'POST':
+        new_name = request.POST.get('name')
+        if new_name:
+            response_list.name = new_name
+            response_list.save()
+            return redirect('lists')
+    return render(request, 'dogcodes/edit-list.html', {'list': response_list})

@@ -8,7 +8,8 @@
     <ul>
       {% for list in lists %}
         <li>
-          <a href="/list/{{ list.id }}/">{{ list.name }}</a> - 
+          <a href="/list/{{ list.id }}/">{{ list.name }}</a> -
+          <a href="/list/{{ list.id }}/edit/">Edit</a> -
           <a href="/list/{{ list.id }}/delete/">Delete</a>
         </li>
       {% empty %}

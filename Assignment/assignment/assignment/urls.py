@@ -14,4 +14,5 @@ urlpatterns = [
     path('lists/', dogcodes_views.lists_view, name='lists'),
     path('list/<int:list_id>/', dogcodes_views.list_details_view, name='list-details'),
     path('list/<int:list_id>/delete/', dogcodes_views.delete_list_view, name='delete-list'),
+    path('list/<int:list_id>/edit/', dogcodes_views.edit_list_view, name='edit_list'),
 ]
